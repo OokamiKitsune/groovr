@@ -2,13 +2,17 @@
 import Link from 'next/link';
 import LoginButton from './components/login';
 import { Heading, Text } from '@radix-ui/themes';
+import Footer from './components/IndexPage/Footer';
+import Header from './components/IndexPage/Header';
 export default function Home() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-      <Heading size="9">Welcome to Groovr</Heading>
-      <Text size="4">Connect your Spotify listening experience with friends.</Text>
+      <Header />
       <br />
       <LoginButton />
+      <Footer />
+
     </div>
+
   );
 }

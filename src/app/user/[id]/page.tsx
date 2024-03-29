@@ -16,7 +16,7 @@ export default function UserPage({
         <>
             Groovr: {params.id}, {spotifyId}
             <button>
-                Spotify Profile
+                Spotify Profiles
             </button>
         </>
     )
