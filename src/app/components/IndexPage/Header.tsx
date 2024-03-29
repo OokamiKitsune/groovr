@@ -1,17 +1,16 @@
 import { Heading, Text } from "@radix-ui/themes";
-import React from "react";
+interface HeaderProps {
+    title: string;
+    description?: string;
+}
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ title, description }) => {
     return (
         <header>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '' }}>
-                <Heading size="9">Welcome to Groovr</Heading>
-                <Text size="4">Connect your Spotify listening experience with friends.</Text>
-
-
+                <Heading size="9">{title}</Heading>
+                <Text size="4">{description}</Text>
             </div>
-
-
         </header>
     );
 };

@@ -39,3 +39,20 @@ footer {
     )
     rgb(var(--background-start-rgb));
 }
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}

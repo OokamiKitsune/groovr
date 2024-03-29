@@ -27,8 +27,9 @@ function LoginButton() {
 
   return (
     <div>
-
+      <br />
       <Button size="4" onClick={handleClick}>Login with Spotify</Button>
+      <br />
     </div>
   );
 }
