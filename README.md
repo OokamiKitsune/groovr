@@ -10,8 +10,8 @@ Groovr allows a Spotify user to publicly share their own Spotify listening histo
 ## Getting Started
 
 We are currently using:
-- Next.js
-- Node
+- Next.js (using the latest App Router for routing pages)
+- Node.js
 - Express - to call spotify API from our backend
 - Radix-UI - to build frontend UI
 - Spotify's Web API - to read users data
