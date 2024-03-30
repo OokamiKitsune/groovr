@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Radix UI color palettes */
+@import url('@radix-ui/colors/black-alpha.css');
+@import url('@radix-ui/colors/indigo.css');
+@import url('@radix-ui/colors/mauve.css');
+@import url('@radix-ui/colors/purple.css');
+@import url('@radix-ui/colors/violet.css');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -24,6 +31,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    
 }
 
 footer {
