@@ -1,14 +1,15 @@
-// This component is responsible for rendering the login button that will redirect the user to the Spotify authorization endpoint.
+// This component is responsible for rendering the login button
+// that will redirect the user to the Spotify authorization endpoint.
 'use client'
 import { Button } from '@radix-ui/themes'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation';
 
-interface PropsType {
+interface LoginProps {
   user: any
 }
 
-function LoginButtonV2(props: PropsType) {
+function LoginButtonV2(props: LoginProps) {
   const supabase = createClientComponentClient();
   const router = useRouter();
 
@@ -33,8 +34,9 @@ function LoginButtonV2(props: PropsType) {
       <br />
       {props.user ? (
         <Button size="4" onClick={signOut}>
-          Logout {props.user.user_metadata.full_name}
+          Logout {props.user.user_metadata.full_name}, {props.user.id.slice(-5)}
         </Button>
+
       ) : (
         <Button size="4" onClick={signInWithSpotify}>
           Login with Spotify
