@@ -17,7 +17,9 @@ function LoginButtonV2(props: LoginProps) {
   async function signInWithSpotify() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'spotify',
+
       options: {
+        scopes: 'user-read-email user-read-private user-top-read',
         redirectTo: 'http://localhost:3000/auth/callback',
       }
     })
