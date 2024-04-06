@@ -33,7 +33,7 @@ function LoginButtonV2(props: PropsType) {
       <br />
       {props.user ? (
         <Button size="4" onClick={signOut}>
-          Logout
+          Logout {props.user.user_metadata.full_name}
         </Button>
       ) : (
         <Button size="4" onClick={signInWithSpotify}>
