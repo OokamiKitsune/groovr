@@ -15,7 +15,7 @@ export const getTopTracks = async (accessToken: String) => {
 
 
   // Get the latest now playing from the user
-  const data = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=1', {
+  const data = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3', {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${accessToken}`
@@ -62,8 +62,8 @@ export default async function Home() {
         description="Share your Spotify experience with the world!"
       />
       <LoginButtonV2 user={data.user} />
-      <Heading>Your Top Track</Heading>
-      <Text>
+      <TopTracks tracks={topTracks.items} />
+      {/* <Text>
         {topTracks ? (
           <p>
             <img
@@ -78,8 +78,7 @@ export default async function Home() {
         ) : (
           <p>🤔 No recent or current top track in the past 30 days.</p>
         )}
-      </Text>
-      {/* <TopTracks TopTrackProps={ } /> */}
+      </Text> */}
       <Footer />
     </div>
   )

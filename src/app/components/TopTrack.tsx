@@ -1,57 +1,54 @@
-// This component is responsible for calling the Spotify API to get the user's top tracks.
-'use client'
-import { Button } from '@radix-ui/themes'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+// components/TopTracks.tsx
+import React from 'react';
+import Link from 'next/link'
+import { Button, Heading, Text } from '@radix-ui/themes'
 
-
-interface TopTrackProps {
-    user: any
-    artist: string
-    track: string
-    access_token: string
+// Define the type for the track object
+interface Track {
+    id: string;
+    name: string;
+    artists: { name: string }[];
+    album: {
+        name: string;
+        images: { url: string }[];
+    };
+    external_urls: {
+        spotify: string;
+    };
 }
 
-function TopTracks(props: TopTrackProps) {
-    const [topTrack, setTopTrack] = useState<any>({})
-    const endpoint = "https://api.spotify.com/v1/me/top/tracks?limit=5"
-    const router = useRouter();
+// Define the props interface for TopTracks component
+interface TopTracksProps {
+    tracks: Track[];
+}
 
-
-    useEffect(() => {
-        getTopTracks()
-    }, [])
-    async function getTopTracks() {
-        // Craft a call to spotify API to get the user's top tracks.
-        const request = await fetch(endpoint, {
-            headers: {
-                Authorization: `Bearer ${props.user.access_token}`,
-            },
-        });
-        if (!request.ok) {
-            throw new Error("Failed to fetch data from Spotify API");
-        }
-        console.log("Request:", request);
-        const data = await request.json();
-        setTopTrack(data);
-    }
-
+const TopTracks: React.FC<TopTracksProps> = ({ tracks }) => {
     return (
         <div>
-            <br />
-            {props.track ? (
-                <p>
-                    {props.artist} - {props.track}
-                </p>
+            <h2>Your Top Tracks</h2>
+            <div>
+                {tracks.map((track) => (
+                    <div key={track.id} style={{ marginBottom: '20px' }}>
+                        <img src={track.album.images[0].url} alt={track.name} style={{ width: '100px', height: '100px', borderRadius: '5%' }} />
+                        <div style={{ marginLeft: 'px', display: 'inline-block', verticalAlign: 'top' }}>
+                            <h3>{track.name}</h3>
+                            <p>Artist: {track.artists.map(artist => artist.name).join(', ')}</p>
+                            <p>Album: {track.album.name}</p>
+                            <p>Mood Sentiment: </p>
+                            <p>Harmonizers: </p>
+                            <p>
+                                <Link href={track.external_urls.spotify}
+                                    target="_blank" rel="noopener noreferrer">
+                                    <Button>▶️ Listen on Spotify</Button>
 
-            ) : (
-                <p>
-                    🤔 No recent or current top track in the past 30 days.
-                </p>
-            )}
+                                </Link>
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default TopTracks
+export default TopTracks;
