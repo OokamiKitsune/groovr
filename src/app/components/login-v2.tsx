@@ -36,6 +36,7 @@ function LoginButtonV2(props: LoginProps) {
       <br />
       {props.user ? (
         <Button size="4" onClick={signOut}>
+          {/* FIX THIS! I moved the logic that handles the fetch into utils/supabase and now this has an issue */}
           Logout {props.user.user_metadata.full_name}, {props.user.id.slice(-5)}
         </Button>
 
