@@ -39,7 +39,7 @@ export default function Home() {
         title="Welcome to Groovr!"
         description="Share your Spotify experience with the world!"
       />
-      <LoginButtonV2 user={user} />
+      <LoginButtonV2 userData={user} />
       <TopTracks tracks={topTracks} />
 
       {/* Render TrackAnalyzer for the first track in topTracks (if available) */}

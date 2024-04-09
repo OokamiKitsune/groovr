@@ -34,10 +34,12 @@ export async function fetchData() {
   if (accessToken) {
     try {
       const tracksData = await fetchTopTracks(accessToken);
+      console.log("tracksData", tracksData);
+      console.log("user", data);
       return { tracks: tracksData || [], user: data };
     } catch (error) {
       throw new Error("Error fetching data:" + error);
     }
   }
-  return { tracks: [], user: null };
+  return { tracks: [], user: null }; //
 }
