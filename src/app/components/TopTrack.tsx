@@ -1,7 +1,9 @@
 // components/TopTracks.tsx
 import React from 'react';
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button, Heading, Text } from '@radix-ui/themes'
+import TrackAnalyzer from './TrackAnalyzer';
 
 // Define the type for the track object
 interface Track {
@@ -29,7 +31,7 @@ const TopTracks: React.FC<TopTracksProps> = ({ tracks }) => {
             <div>
                 {tracks.map((track) => (
                     <div key={track.id} style={{ marginBottom: '20px' }}>
-                        <img src={track.album.images[0].url} alt={track.name} style={{ width: '100px', height: '100px', borderRadius: '5%' }} />
+                        <Image src={track.album.images[0].url} alt={track.name} width={100} height={100} style={{ borderRadius: '10%' }} />
                         <div style={{ marginLeft: 'px', display: 'inline-block', verticalAlign: 'top' }}>
                             <h3>{track.name}</h3>
                             <p>Artist: {track.artists.map(artist => artist.name).join(', ')}</p>
